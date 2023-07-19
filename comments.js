@@ -77,11 +77,3 @@ router.get('/:id', authMiddleware, async (req, res) => {
         res.status(500).json({ error: err });
     }
 });
-
-//***********************************************************
-// Create a comment
-//***********************************************************
-router.post('/', authMiddleware, async (req, res) => {
-    try {
-        const comment = await Comment.create({
-            comment_text: req.body
