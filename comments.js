@@ -1,36 +1,14 @@
-// Creat web app with express
+// Create server web comments
+// ========================================================
+
+// Import Node.js core dependencies
+const fs = require('fs');
+const path = require('path');
+
+// Import third-party dependencies
 const express = require('express');
-const router = express.Router();
-// Get model
-const Comment = require('../models/comment');
-const Post = require('../models/post');
+const bodyParser = require('body-parser');
 
-// Get all comments
-router.get('/', async (req, res) => {
-    try {
-        const comments = await Comment.find();
-        res.json(comments);
-    } catch (err) {
-        res.json({ message: err });
-    }
-});
-
-// Get all comments of a post
-router.get('/:postId', async (req, res) => {
-    try {
-        const comments = await Comment.find({ postId: req.params.postId });
-        res.json(comments);
-    } catch (err) {
-        res.json({ message: err });
-    }
-});
-
-// Get a comment by id
-router.get('/comment/:commentId', async (req, res) => {
-    try {
-        const comment = await Comment.findById(req.params.commentId);
-        res.json(comment);
-    } catch (err) {
-        res.json({ message: err });
-    }
-});
+// Constants
+const PORT = 3000;
+const HOST = '
